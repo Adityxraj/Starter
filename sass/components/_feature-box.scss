@@ -1,0 +1,35 @@
+.feature-box {
+    background-color: rgba($color-darker, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    
+    //Applied only to the feature boxes and everything inside them.
+    transform: skewY(7deg);
+    
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
+
+    &:hover {
+        transform: skewY(7deg) translateY(-1.5rem) scale(1.05);
+    }
+
+    &__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        color: transparent;
+        background-image: linear-gradient(to right, $color-primary, $color-primary-dark);
+        -webkit-background-clip: text;
+
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
+
+    }
+
+}

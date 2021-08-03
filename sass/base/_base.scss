@@ -1,0 +1,76 @@
+/* * ---> Universal Selecter - Selects Everything */
+
+/* Box-sizing - Border Box means, no padding or margin is added to the total width and height. */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: inherit;
+}
+
+/* What this does is make 1rem = 10px, to make life easier. */
+html {
+    scroll-behavior: smooth;
+    // scroll-behavior: smooth;
+    /* font-size: 10px; */
+
+    /* 10px is 62.5% of 16px (default browser font-size) */
+    font-size: 62.5%;
+    
+    //Media query stuff
+    //Goes from bigger size to smaller size. (Big-desktop is defined as MAX width, so it can come later.
+     @include respond(tab-land) { // Width < 900 ?
+        font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+    }
+    
+    @include respond(tab-port) { //Width < 600 ?
+        font-size: 50%; // 1rem = 8px
+    }
+
+    // @include respond(phone) { //Width < 600 ?
+    //     font-size: 30%; // 1rem = 4.8px
+    // }
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem = 12px
+    }
+}
+body {
+    background-color: $color-darker;
+    box-sizing: border-box;
+}
+
+.rellax {
+    transition: all .3s ease-out;
+    @include respond(tab-port) {
+        transition: none;
+    }
+}
+
+//Change highlight color
+::-moz-selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
+
+//Custom Scroll-bar
+::-webkit-scrollbar {
+    width: 1.3rem;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $color-primary;
+    margin: .5rem;
+    border-radius: .3rem;
+    border: solid .2rem $color-darker;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #81fff4;
+}
+

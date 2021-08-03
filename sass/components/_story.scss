@@ -1,0 +1,100 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-darker, .8);
+    border-radius: .3rem;
+    padding: 6rem;
+    //Did this because we took up 3rem of padding at left side due to moving the circle. So added 3 to the initial 6rem on the left.
+    padding-left: 9rem;
+    font-size: $default-font-size;
+
+    transform: skewX(-12deg);
+
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
+    // //ONCE AGAIN -- THE DIRECT CHILD SELECTOR - POWERFUL
+    // & > * {
+    //     transform: skewX(12deg);
+    // }
+    //This didn't work here, because this wouldn't "unskew" the img as the img already had a transform property and it takes priority over this. So we do it the old fasioned way.
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        //To make the rest of the content to float beside it.
+        float: left;
+        
+        //When is comes to floated stuff,better to use simple transform:translate instead of messing with margins etc.
+        transform: translateX(-3rem) skewX(12deg);
+
+        position: relative; //For the caption.
+
+        //To Prevent "leak" of photo due to blur filter.
+        overflow: hidden;
+
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            
+            //This is done to make the text FLOW AROUND THE CIRCLE ( in this case ).
+            //To use this an element needs to be floated and a defined height and width.Very Demanding.
+            -webkit-shape-outside: circle(50% at 50% 50%); // First 50% = Radius (Half the diameter), the over 50% and 50% is position of centre.
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none; //Because, If supported, NO border radius is allowed.
+        }
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
+    }
+
+    &__img {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    //When using direct child selector, the children need to be present in the sass/css...
+    &__text {
+        transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.5s;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(.3rem) brightness(60%);
+    }
+}

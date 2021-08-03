@@ -1,0 +1,127 @@
+.section-about {
+    background-color: $color-darker;
+    padding: 25rem 0;
+    margin-top: -20vh; //Moves Up
+
+    @include respond(tab-land) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include respond(tab-port) {
+        padding: 20rem 0;
+    }
+}
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient( to right bottom , 
+    rgba($color-primary, 0.801) , 
+    rgba($color-primary-dark, 0.801)) , 
+    url(../img/party2.jpg);
+    background-size: cover;
+
+    transform: skewY(-7deg);
+    
+    //**IMPORTANT**
+    //What is does is that it selects the DIRECT CHILD of the element ONLY (in this case, the "row") and applies the CSS property to it.
+    // & > * {
+    //     transform: skewY(7deg);
+    // }
+    
+
+    //To move the section UPWARDS.
+    margin-top: -10rem;
+    
+    @include respond(tab-land) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+}
+
+.section-tours {
+    margin-top: -10rem;
+    background-color: $color-darker;
+    padding: 25rem 0 15rem 0;
+
+    @include respond(tab-land) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0;
+    }
+}
+
+.section-stories {
+    position: relative;
+    padding: 15rem 0;
+    background-image: linear-gradient( to right bottom , 
+    rgba($color-primary, 0.801) , 
+    rgba($color-primary-dark, 0.801));
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+
+    @include respond(phone-custom-small) {
+        padding: 3rem;
+    }
+}
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary, $color-primary-dark);
+
+    @include respond(tab-land) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+    @include respond(phone-custom-small) {
+        padding: 3rem;
+    }
+}
+
+.book {
+    background-image: linear-gradient(105deg, 
+                                        rgba($color-darker, .9) 0, 
+                                        rgba($color-darker, .9) 50%,
+                                        rgba(255, 68, 0, 0) 50%) ,
+                                        url(../img/bulb-form.jpg);
+    background-size: cover;
+    border-radius: $border-radius-small;
+    box-shadow: 0 2.5rem 4rem rgba($color-black, 0.3);
+
+    @include respond(tab-land) {
+        background-image: linear-gradient(105deg, 
+                                        rgba($color-darker, .9) 0, 
+                                        rgba($color-darker, .9) 65%,
+                                        rgba(255, 68, 0, 0) 65%) ,
+                                        url(../img/bulb-form.jpg);
+        background-size: cover;
+    }
+
+    @include respond(tab-port) {
+        background-image: linear-gradient(to right, 
+                                        rgba($color-darker, .9) 0%, 
+                                        rgba($color-darker, .9) 100%),
+                                        url(../img/bulb-form.jpg);
+    }
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+
+        @include respond(tab-land) {
+            width: 65%;
+        }
+        @include respond(tab-port) {
+            width: 100%;
+        }
+    }
+}

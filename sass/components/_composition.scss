@@ -1,0 +1,80 @@
+.composition {
+
+    position: relative;
+
+    @include respond(phone-custom) {
+        width: 77%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__photo{
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 0.5rem;
+        position: absolute;
+        z-index: 10;
+        outline-offset: 2rem;
+        transition: all .2s;
+
+        @include respond(tab-port) {
+            float: left;
+            position: relative;
+            width: 33.333333333%;
+            box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+            outline-offset: .8rem;
+        }
+        
+
+
+        &--p1 {
+            left: 0;
+            top: -1rem;
+
+            @include respond(tab-port) {
+                top: 1rem;
+                transform: scale(1.3);
+            }
+        }
+
+        &--p2 {
+            right: 0;
+            top: 5rem;
+
+            @include respond(tab-port) {
+                top: -1rem;
+                transform: scale(1.3);
+                z-index: 100;
+            }
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 13rem;
+
+            @include respond(tab-port) {
+                top: 1rem;
+                left: 0;
+                transform: scale(1.3);
+            }
+        }
+
+        &:hover{
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-1rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+
+            @include respond(tab-port) {
+                outline: .8rem solid $color-primary;
+                transform: scale(1.6);
+                z-index: 200;
+            }
+        }
+    }
+
+    //First all photos selected for THIS hover, then Photos that are NOT HOVERED OVER are selected.
+    &:hover &__photo:not(:hover) {
+        transform: scale(0.9);
+    }
+}
