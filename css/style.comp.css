@@ -149,6 +149,7 @@ p {
   display: inline-block;
   background-image: linear-gradient(to right, #14ffec, #0d7377);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   letter-spacing: .2rem;
   transition: all .2s;
@@ -205,8 +206,8 @@ p {
 .u-padding-top-big {
   padding-top: 8rem !important; }
 
-.btn {
-  /* Treated like a child */ }
+/*.btn {
+   Treated like a child  } */
   .btn, .btn:link, .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -361,7 +362,8 @@ p {
     margin-bottom: .5rem;
     color: transparent;
     background-image: linear-gradient(to right, #14ffec, #0d7377);
-    -webkit-background-clip: text; }
+    -webkit-background-clip: text;
+    background-clip: text; }
     @media only screen and (max-width: 56.25em) {
       .feature-box__icon {
         margin-bottom: 0; } }
