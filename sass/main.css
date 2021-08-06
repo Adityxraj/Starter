@@ -229,9 +229,9 @@ body {
   padding-top: 8rem !important;
 }
 
-.btn {
-  /* Treated like a child */
-}
+/* .btn {
+   Treated like a child 
+} */
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
